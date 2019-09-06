@@ -12,3 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+
+sharedcode/build/
+
+.idea/
