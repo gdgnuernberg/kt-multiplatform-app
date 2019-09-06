@@ -49,7 +49,7 @@ Here are some stupid examples to kickstart your creativity:
 ## Resources
 * [Kotlin Hands-On: Introduction to Kotlin Multiplatform](https://play.kotlinlang.org/hands-on/Introduction%20to%20Kotlin%20Multiplatform/01_Introduction)
 * [Kotlin Hands-On: Targeting iOS and Android](https://play.kotlinlang.org/hands-on/Targeting%20iOS%20and%20Android%20with%20Kotlin%20Multiplatform/01_Introduction)
-* [Kotlin Reference: Multiplatform Programming](https://kotlinlang.org/docs/reference/multiplatform.html]
+* [Kotlin Reference: Multiplatform Programming](https://kotlinlang.org/docs/reference/multiplatform.html)
 * [Readme: Coroutines and multiplatform / native](https://github.com/Kotlin/kotlinx.coroutines/blob/master/README.md#multiplatform)
 * [Tutorial: Kotlin Multiplatform Project for Android and iOS: Getting Started](https://www.raywenderlich.com/1022411-kotlin-multiplatform-project-for-android-and-ios-getting-started)
 * [Tutorial: A practical Intro to Kotlin Multiplatform](https://www.bugsnag.com/blog/kotlin-multiplatform)
