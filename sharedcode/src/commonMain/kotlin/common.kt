@@ -1,19 +1,15 @@
 package io.github.gdgnbgandroid.mpp.mobile
 
-expect fun platformName(): String
-
-fun createApplicationScreenMessage(): String {
-    return "Kotlin Rocks on ${platformName()}"
-}
+expect fun getUserId(): String
 
 object Repository {
-    private val _votes = mutableMapOf<Int, MeetupTopic>()
-    val votes: Map<Int, MeetupTopic>
-        get() = _votes
+    private val _topics = mutableMapOf<Int, MeetupTopic>()
+    val topics: Map<Int, MeetupTopic>
+        get() = _topics
 
     init {
         (1..9).forEach {
-            _votes[it] = MeetupTopic(
+            _topics[it] = MeetupTopic(
                 it,
                 "name $it",
                 "description $it"
@@ -21,25 +17,17 @@ object Repository {
         }
     }
 
-    fun vote(meetupTopicId: Int) {
-        val meetupTopic = _votes[meetupTopicId]
-        meetupTopic?.let {
-            _votes[meetupTopicId] = (meetupTopic.copy(voteCount = meetupTopic.voteCount + 1))
-        }
+    fun vote(meetupTopicId: Int, userId: String) {
+        _topics[meetupTopicId]?.voteCount?.apply { add(userId) }
     }
 
-    fun unvote(meetupTopicId: Int) {
-        val meetupTopic = _votes[meetupTopicId]
-        meetupTopic?.let {
-            if (meetupTopic.voteCount > 0) {
-                _votes[meetupTopicId] = (meetupTopic.copy(voteCount = meetupTopic.voteCount - 1))
-            }
-        }
+    fun unvote(meetupTopicId: Int, userId: String) {
+        _topics[meetupTopicId]?.voteCount?.apply { remove(userId) }
     }
 
     fun addTopic(name: String, description: String?) {
-        val id = _votes.size + 1
-        _votes[id] = MeetupTopic(id, name, description)
+        val id = _topics.size + 1
+        _topics[id] = MeetupTopic(id, name, description)
     }
 }
 
@@ -47,5 +35,5 @@ data class MeetupTopic(
     val id: Int,
     val name: String,
     val description: String? = null,
-    var voteCount: Int = 0
+    var voteCount: MutableSet<String> = mutableSetOf()
 )

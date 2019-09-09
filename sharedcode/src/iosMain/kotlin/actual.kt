@@ -2,8 +2,6 @@ package io.github.gdgnbgandroid.mpp.mobile
 
 import platform.UIKit.UIDevice
 
-actual fun platformName(): String {
-    return UIDevice.currentDevice.systemName() +
-            " " +
-            UIDevice.currentDevice.systemVersion
+actual fun getUserId(): String {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 }
