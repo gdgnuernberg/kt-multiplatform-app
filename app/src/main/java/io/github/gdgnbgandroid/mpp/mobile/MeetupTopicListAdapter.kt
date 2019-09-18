@@ -31,7 +31,7 @@ class MeetupTopicListAdapter(
 
         titleTextView?.text = meetupTopic.name
         descriptionTextView?.text = meetupTopic.description
-        votesTextView?.text = meetupTopic.voteCount.toString()
+        votesTextView?.text = meetupTopic.voteCount.size.toString()
 
         return tempConvertView!!
     }
