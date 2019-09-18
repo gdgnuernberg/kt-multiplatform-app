@@ -2,13 +2,17 @@ package io.github.gdgnbgandroid.mpp.mobile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<TextView>(R.id.main_text).text = createApplicationScreenMessage()
+
+        val meetupListView = findViewById<ListView>(R.id.topic_list_view)
+
+        val meetupTopicListAdapter = MeetupTopicListAdapter(this, Repository.topics.toList())
+        meetupListView.adapter = meetupTopicListAdapter
     }
 }
