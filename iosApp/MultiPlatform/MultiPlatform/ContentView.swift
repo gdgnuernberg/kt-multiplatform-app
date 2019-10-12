@@ -10,7 +10,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            Form {
+                Section {
+                    ForEach(1 ..< 10 ) { row in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("name \(row)")
+                                    .font(.title)
+                                Text("description \(row)")
+                                    .font(.body)
+                            }
+                            Spacer()
+                            Text("0")
+                        }
+                    }
+                }
+            }
+            .navigationBarTitle("GDG Nuremberg Android", displayMode: .inline)
+        }
     }
 }
 
