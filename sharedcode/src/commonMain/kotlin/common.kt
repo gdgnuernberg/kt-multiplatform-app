@@ -31,11 +31,11 @@ object Repository {
     }
 }
 
-class FirebaseRepository {
-    expect fun authenticate(callback: (success: Boolean) -> Unit)
-    expect fun vote(meetupTopicId: Int, userId: String)
-    expect fun unvote(meetupTopicId: Int, userId: String)
-    expect fun addTopic(name: String, description: String?)
+expect class FirebaseRepository {
+    fun authenticate(callback: (success: Boolean) -> Unit)
+    fun vote(meetupTopicId: Int, userId: String)
+    fun unvote(meetupTopicId: Int, userId: String)
+    fun addTopic(name: String, description: String?)
 }
 
 data class MeetupTopic(
