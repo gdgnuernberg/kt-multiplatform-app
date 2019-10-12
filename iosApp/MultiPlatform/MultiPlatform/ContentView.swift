@@ -7,22 +7,25 @@
 //
 
 import SwiftUI
+import SharedCode
 
 struct ContentView: View {
+    private let topics: [MeetupTopic] = Array(Repository().topics.values)
+
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    ForEach(1 ..< 10 ) { row in
+                    ForEach(topics, id: \.self) { topic in
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("name \(row)")
+                                Text("\(topic.name)")
                                     .font(.title)
-                                Text("description \(row)")
+                                Text("\(topic.description)")
                                     .font(.body)
                             }
                             Spacer()
-                            Text("0")
+                            Text("\(topic.voteCount.count)")
                         }
                     }
                 }
