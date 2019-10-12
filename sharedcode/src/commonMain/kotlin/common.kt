@@ -1,7 +1,5 @@
 package io.github.gdgnbgandroid.mpp.mobile
 
-expect fun getUserId(): String
-
 object Repository {
     private val _topics = mutableMapOf<Int, MeetupTopic>()
     val topics: Map<Int, MeetupTopic>
@@ -31,12 +29,7 @@ object Repository {
     }
 }
 
-//expect class FirebaseRepository {
-//    fun authenticate(callback: (success: Boolean) -> Unit)
-//    fun vote(meetupTopicId: Int, userId: String)
-//    fun unvote(meetupTopicId: Int, userId: String)
-//    fun addTopic(name: String, description: String?)
-//}
+expect fun String.toHash(): String
 
 data class MeetupTopic(
     val id: Int,
