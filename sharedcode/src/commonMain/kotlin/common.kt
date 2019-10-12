@@ -31,6 +31,13 @@ object Repository {
     }
 }
 
+expect class FirebaseRepository {
+    fun authenticate(callback: (success: Boolean) -> Unit)
+    fun vote(meetupTopicId: Int, userId: String)
+    fun unvote(meetupTopicId: Int, userId: String)
+    fun addTopic(name: String, description: String?)
+}
+
 data class MeetupTopic(
     val id: Int,
     val name: String,
