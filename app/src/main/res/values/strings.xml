@@ -3,4 +3,10 @@
     <string name="login_enter_email_address">enter email address</string>
     <string name="login_enter_your_password">enter your password</string>
     <string name="title_login">Login</string>
+
+
+    <string name="title_add_topic">Add Topic</string>
+    <string name="action_add">Add</string>
+    <string name="topic_title_hint">Title</string>
+    <string name="topic_desctrption_hint">Description</string>
 </resources>
