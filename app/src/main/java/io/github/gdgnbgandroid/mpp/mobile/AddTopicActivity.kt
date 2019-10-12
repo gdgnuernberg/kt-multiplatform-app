@@ -17,9 +17,9 @@ class AddTopicActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_topic)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        val btnAdd = findViewById<Button>(R.id.btn_add)
-        val etTitle = findViewById<EditText>(R.id.et_title)
-        val etDesc = findViewById<EditText>(R.id.et_description)
+        val add_button = findViewById<Button>(R.id.add_button)
+        val title_edit_text = findViewById<EditText>(R.id.title_edit_text)
+        val description_edit_text = findViewById<EditText>(R.id.description_edit_text)
 
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.ic_back)
@@ -27,15 +27,15 @@ class AddTopicActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        btnAdd.setOnClickListener {
-            if (etTitle.text.toString().isBlank()) {
+        add_button.setOnClickListener {
+            if (title_edit_text.text.toString().isBlank()) {
                 Toast.makeText(this,"Please enter title..",Toast.LENGTH_SHORT).show()
             }
-            if (etDesc.text.toString().isBlank()) {
+            if (description_edit_text.text.toString().isBlank()) {
                 Toast.makeText(this,"Please enter description..",Toast.LENGTH_SHORT).show()
             }
 
-            Repository.addTopic(etTitle.text.toString(), etDesc.text.toString())
+            Repository.addTopic(title_edit_text.text.toString(), description_edit_text.text.toString())
             finish()
         }
 
