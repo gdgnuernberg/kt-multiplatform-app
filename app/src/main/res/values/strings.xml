@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GDG Nuremberg Android</string>
+    <string name="login_enter_email_address">enter email address</string>
+    <string name="login_enter_your_password">enter your password</string>
+    <string name="title_login">Login</string>
 </resources>
