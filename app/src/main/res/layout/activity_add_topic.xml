@@ -6,53 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/windowBackgroundColor"
     tools:context=".AddTopicActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        app:titleTextColor="@android:color/white"
-        app:title="@string/title_add_topic"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="wrap_content"/>
-    <EditText
-        android:id="@+id/title_edit_text"
-        android:padding="8dp"
-        android:layout_margin="16dp"
-        android:textColor="@android:color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/topic_title_hint"
-        android:textColorHint="@android:color/darker_gray"
-        android:background="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:nextFocusDown="@string/action_add"
-        android:imeOptions="actionNext"/>
 
     <EditText
-        android:id="@+id/description_edit_text"
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:hint="@string/topic_title_hint"
+        android:imeOptions="actionNext"
+        android:padding="@dimen/padding_default"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:padding="8dp"
-        android:minLines="5"
-        app:layout_constraintTop_toBottomOf="@id/title_edit_text"
-        android:hint="@string/topic_desctrption_hint"
-        android:textColorHint="@android:color/darker_gray"
-        android:textColor="@android:color/black"
-        android:background="@android:color/white"
         android:gravity="top|start"
-        app:layout_constraintBottom_toTopOf="@id/add_button"
-        android:imeOptions="actionDone"/>
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="match_parent"
+        android:hint="@string/topic_desctrption_hint"
+        android:imeOptions="actionDone"
+        android:minLines="5"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/addButton"
+        app:layout_constraintTop_toBottomOf="@id/titleEditText" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/action_add"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_check" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

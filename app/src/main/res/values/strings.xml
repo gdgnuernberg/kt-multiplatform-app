@@ -1,12 +1,18 @@
 <resources>
-    <string name="app_name">GDG Nuremberg Android</string>
+    <string name="app_name">Vote for Topics</string>
+
+    <string name="title_login">Login</string>
     <string name="login_enter_email_address">enter email address</string>
     <string name="login_enter_your_password">enter your password</string>
-    <string name="title_login">Login</string>
+    <string name="login_please_provide_an_email_address_and_a_password_to_allow_us_generating_a_save_identifier_for_you">Please provide an email address and a password to allow us generating a save identifier for you.</string>
 
 
     <string name="title_add_topic">Add Topic</string>
     <string name="action_add">Add</string>
     <string name="topic_title_hint">Title</string>
     <string name="topic_desctrption_hint">Description</string>
+
+    <string name="error_no_email_provided">please provide an email address</string>
+    <string name="error_no_password_provided">please provide a password</string>
+    <string name="error_general">An error has occurred</string>
 </resources>

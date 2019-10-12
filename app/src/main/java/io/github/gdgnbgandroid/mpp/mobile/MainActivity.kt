@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
         val meetupTopicListAdapter = MeetupTopicListAdapter(this, Repository.topics.toList())
         topiclistView.adapter = meetupTopicListAdapter
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+        addTopicButton.setOnClickListener {
             val intent = Intent(this, AddTopicActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_TOPIC)
         }
     }
 
@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
                 )
                 .apply()
             loadTopics()
+        } else if (requestCode == REQUEST_CODE_TOPIC && resultCode == Activity.RESULT_OK) {
+            loadTopics()
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
@@ -54,5 +56,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val KEY_USER_IDENTIFICATION = "key_user_identification"
         private const val REQUEST_CODE_USER = 591
+        private const val REQUEST_CODE_TOPIC = 592
     }
 }
