@@ -1,11 +1,10 @@
 package io.github.gdgnbgandroid.mpp.mobile
 
-import android.app.Activity
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,7 +26,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadTopics() {
-        val meetupTopicListAdapter = MeetupTopicListAdapter(this, Repository.topics.toList())
+        val meetupTopicListAdapter = MeetupTopicListAdapter(this, Repository.topics.toList(), { topic ->
+            sharedPreferences.getString(KEY_USER_IDENTIFICATION, "")
+                ?.let { userId -> Repository.vote(topic.id, userId) }
+            loadTopics()
+        })
         topiclistView.adapter = meetupTopicListAdapter
 
         addTopicButton.setOnClickListener {
@@ -37,16 +40,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE_USER && resultCode == Activity.RESULT_OK && data != null) {
-            sharedPreferences
-                .edit()
-                .putString(
+        if (requestCode == REQUEST_CODE_USER && resultCode == RESULT_OK && data != null) {
+            sharedPreferences.edit {
+                putString(
                     KEY_USER_IDENTIFICATION,
                     data.getStringExtra(LoginActivity.EXTRA_USER_IDENTIFICATION)
                 )
-                .apply()
+            }
             loadTopics()
-        } else if (requestCode == REQUEST_CODE_TOPIC && resultCode == Activity.RESULT_OK) {
+        } else if (requestCode == REQUEST_CODE_TOPIC && resultCode == RESULT_OK) {
             loadTopics()
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val KEY_USER_IDENTIFICATION = "key_user_identification"
+        const val KEY_USER_IDENTIFICATION = "key_user_identification"
         private const val REQUEST_CODE_USER = 591
         private const val REQUEST_CODE_TOPIC = 592
     }

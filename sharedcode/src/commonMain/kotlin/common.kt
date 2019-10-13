@@ -16,11 +16,13 @@ object Repository {
     }
 
     fun vote(meetupTopicId: Int, userId: String) {
-        _topics[meetupTopicId]?.voteCount?.apply { add(userId) }
-    }
-
-    fun unvote(meetupTopicId: Int, userId: String) {
-        _topics[meetupTopicId]?.voteCount?.apply { remove(userId) }
+        _topics[meetupTopicId]?.userVotings?.apply {
+            if (this.contains(userId)) {
+                remove(userId)
+            } else {
+                add(userId)
+            }
+        }
     }
 
     fun addTopic(name: String, description: String?) {
@@ -35,5 +37,5 @@ data class MeetupTopic(
     val id: Int,
     val name: String,
     val description: String? = null,
-    var voteCount: MutableSet<String> = mutableSetOf()
+    var userVotings: MutableSet<String> = mutableSetOf()
 )
