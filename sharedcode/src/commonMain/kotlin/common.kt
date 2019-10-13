@@ -3,7 +3,7 @@ package io.github.gdgnbgandroid.mpp.mobile
 object Repository {
     private val _topics = mutableMapOf<Int, MeetupTopic>()
     val topics: Map<Int, MeetupTopic>
-        get() = _topics
+        get() = _topics.toList().sortedBy { it.second.userVotings.size }.reversed().toMap()
 
     init {
         (1..9).forEach {
