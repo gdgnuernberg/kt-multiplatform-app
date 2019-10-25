@@ -7,36 +7,37 @@
 //
 
 import SwiftUI
-import SharedCode
 
 struct ContentView: View {
-    private let topics: [MeetupTopic] = Array(Repository().topics.values)
-
-    var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    ForEach(topics, id: \.self) { topic in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("\(topic.name)")
-                                    .font(.title)
-                                Text("\(topic.description)")
-                                    .font(.body)
-                            }
-                            Spacer()
-                            Text("\(topic.voteCount.count)")
-                        }
-                    }
-                }
-            }
-            .navigationBarTitle("GDG Nuremberg Android", displayMode: .inline)
-        }
-    }
+	@State var topics = mockTopics
+	@State var isModal = false
+	var body: some View {
+		NavigationView {
+			Form {
+				Section {
+					ForEach(topics) { row in
+						TopicItemView(topic: row).onTapGesture {
+							let index = self.topics.firstIndex(of: row)
+							self.topics[index!].isSelected.toggle()
+						}
+					}
+				}
+			}
+			.navigationBarTitle("GDG Nuremberg Android", displayMode: .inline)
+			.navigationBarItems(trailing: Button(
+					action: {
+						self.isModal = true
+					},
+					label: { Image(systemName: "plus") }
+			).sheet(isPresented: $isModal) {
+				AddTopicView(topics: self.$topics)
+			})
+		}
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+	static var previews: some View {
+		ContentView()
+	}
 }
